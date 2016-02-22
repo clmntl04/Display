@@ -892,7 +892,7 @@ FixedwingAttitudeControl::task_main()
 						   (delta_flaperon) / 1000000;
 			}
 
-			/* decide if in stabilized or full manual control */
+			/* decide if in propeller control mode or conventional control mode */
 			if (_vcontrol_mode.flag_control_attitude_enabled) {
 				/* control mode set to using props */
 				_actuators.control[actuator_controls_s::INDEX_ROLL] = _manual.y + _parameters.trim_roll;
@@ -901,7 +901,7 @@ FixedwingAttitudeControl::task_main()
 				_actuators.control[actuator_controls_s::INDEX_THROTTLE] = _manual.z;
 
 			} else {
-				/* manual/direct control */
+				/* manual/direct conventional control */
 				_actuators.control[actuator_controls_s::INDEX_ROLL] = _manual.y + _parameters.trim_roll;
 				_actuators.control[actuator_controls_s::INDEX_PITCH] = -_manual.x + _parameters.trim_pitch;
 				_actuators.control[actuator_controls_s::INDEX_YAW] = _manual.r + _parameters.trim_yaw;
