@@ -894,10 +894,10 @@ FixedwingAttitudeControl::task_main()
 
 			/* decide if in stabilized or full manual control */
 			if (_vcontrol_mode.flag_control_attitude_enabled) {
-				/* scale around tuning airspeed */
+				/* control mode set to using props */
 				_actuators.control[actuator_controls_s::INDEX_ROLL] = _manual.y + _parameters.trim_roll;
 				_actuators.control[actuator_controls_s::INDEX_PITCH] = -_manual.x + _parameters.trim_pitch;
-				_actuators.control[5] = _manual.r + _parameters.trim_yaw; //yaw axis mapped to aux
+				_actuators.control[5] = _manual.r + _parameters.trim_yaw; //yaw axis mapped to aux channel, used by mixer for outputs
 				_actuators.control[actuator_controls_s::INDEX_THROTTLE] = _manual.z;
 
 			} else {
